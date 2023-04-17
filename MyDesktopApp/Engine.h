@@ -1,36 +1,36 @@
 /********************************************************************************
-* 
-* File:				Game.h
+*
+* File:				Engine.h
 * Project:			Game Engine
 * Author:			Breno Soares Alves
-* Creation Date:	04-16-2023
-* 
-* Subject:			An abstract class which every game will derives. 
-* 
+* Creation Date:	04-17-2023
+*
+* Subject:			A class responsable to manage the game (Entry point)
 ********************************************************************************/
 
-#ifndef _GAME_H_
-#define _GAME_H_
+#ifndef _ENGINE_H_
+#define _ENGINE_H_
 
 // --------------------------------------------------------------------------
 
+#include "Game.h"
 #include "Window.h"
 
 // --------------------------------------------------------------------------
 
-class Game
+class Engine
 {
-protected:
-	static Window*& window;
+private:
+	int Loop();
 
 public:
-	Game();
-	virtual ~Game();
+	static Game* game;
+	static Window* window;
 
-	virtual void Init() = 0;
-	virtual void Update() = 0;
-	virtual void Draw() = 0;
-	virtual void Finalize() = 0;
+	Engine();
+	~Engine();
+
+	int Start(Game* level);
 };
 
 // --------------------------------------------------------------------------
